@@ -1,0 +1,25 @@
+import re
+
+def card_values(cards):
+    string_values = []
+    for i in cards:
+        x = re.split("[SCDH]",i)
+        string_values.append(x[0])
+        if "A" in i:
+            string_values.append("1")
+            string_values.remove("A")
+        if "K" in i:
+            string_values.append("10")
+            string_values.remove("K")
+        if "Q" in i:
+            string_values.append("10")
+            string_values.remove("Q")
+        if "J" in i:
+            string_values.append("10")
+            string_values.remove("J")
+    values = [int(item) for item in string_values]
+    print(values)
+    return values
+
+cards = ["10H", "7C", "AS", "QS"]
+card_values(cards)
